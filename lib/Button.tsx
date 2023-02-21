@@ -6,7 +6,7 @@ type Props = {
 const Button: FC<Props> = (props: Props) => {
   return (
     <div>
-
+      Button
     </div>
   );
 };
