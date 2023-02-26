@@ -7,7 +7,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "outDir": "lib",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
@@ -20,7 +20,7 @@
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
-    ],
+    ]
   },
   "include": [
     "./lib",

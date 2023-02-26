@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './lib/index.tsx',
-  mode: "production",
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist/lib'),
@@ -12,11 +11,6 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", "j.sx", ".ts", ".tsx"]
-  },
-  performance: {
-    hints: "warning",
-    maxEntrypointSize: 50000000,
-    maxAssetSize: 30000000
   },
   module: {
     rules: [
