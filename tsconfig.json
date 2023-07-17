@@ -23,8 +23,18 @@
     ]
   },
   "include": [
-    "./lib",
-    "./types"
+    "lib/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts",
+    "*.js"
   ],
   "compileOnSave": false
 }

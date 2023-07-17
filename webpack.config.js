@@ -10,13 +10,17 @@ module.exports = {
     libraryTarget: "umd"
   },
   resolve: {
-    extensions: [".js", "j.sx", ".ts", ".tsx"]
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/i,
+        test: /\.tsx?$/,
         use: ['awesome-typescript-loader'],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
       },
     ],
   },

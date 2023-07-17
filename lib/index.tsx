@@ -1,7 +1,8 @@
 import React from "react";
 import * as ReactDom from "react-dom/client"
-import Button from "./Button";
+import Icon from "./icon";
 
-const root = ReactDom.createRoot(document.createElement("div"))
-root.render(<Button />)
+const rootDiv = document.querySelector('#root')
+const root = ReactDom.createRoot(rootDiv!)
+root.render(<Icon name='share' />)
 
