@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import './importIcons'
-import './index.scss'
-import cs from "./utils/cs";
+import '../index.scss'
+import cs from "../utils/cs";
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
 };
