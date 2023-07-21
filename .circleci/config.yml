@@ -1,34 +1,69 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:16
+
 version: 2.1
 
 # Define the jobs we want to run for this project
 jobs:
-  build:
-    docker:
-      - image: cimg/base:2023.03
+  prepare:
+    <<: *defaults
     steps:
       - checkout
-      - run:
-          name: Install Dependencies
-          command: yarn install
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+            - package.json
+            - LICENSE
+            - README.md
   test:
     docker:
       - image: cimg/base:2023.03
     steps:
       - checkout
-
-      # Install dependencies
-      - run:
-          name: Install Dependencies
-          command: yarn install
-
-      # Run Jest tests
-      - run:
-          name: Run Tests
-          command: yarn test
+      - attach_workspace:
+          at: .
+      - run: yarn test
+      - store_test_results:
+          path: test-results
 
 # Orchestrate our job run sequence
 workflows:
+  version: 2
   build_and_test:
     jobs:
-      - build
-      - test
+      - prepare
+      - build:
+          requires:
+            - test
+      - test:
+          requires:
+            - prepare
+      - publish:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
