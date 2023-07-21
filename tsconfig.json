@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
-    "outDir": "lib",
+    "outDir": "dist",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "strictNullChecks": true,
@@ -20,7 +20,8 @@
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "declaration": true,
   },
   "include": [
     "lib/**/*"
