@@ -7,19 +7,28 @@ jobs:
       - image: cimg/base:2023.03
     steps:
       - checkout
-      - run: yarn install
+      - run:
+          name: Install Dependencies
+          command: npm install
   test:
     docker:
       - image: cimg/base:2023.03
     steps:
       - checkout
-      - run: yarn test
+
+      # Install dependencies
+      - run:
+          name: Install Dependencies
+          command: npm install
+
+      # Run Jest tests
+      - run:
+          name: Run Tests
+          command: npm run test
 
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
       - build
-      - test:
-          - requires:
-              - build
+      - test
