@@ -1,8 +1,2 @@
-import React from "react";
-import * as ReactDom from "react-dom/client"
-import Icon from "./icon/icon";
-
-const rootDiv = document.querySelector('#root')
-const root = ReactDom.createRoot(rootDiv!)
-root.render(<Icon name='share' />)
-
+export {default as Icon} from "./icon/icon"
+export {default as Button} from "./button/button"
