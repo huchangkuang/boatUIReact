@@ -1,5 +1,6 @@
 const config = {
   verbose: true,
+  reporters: ["jest-junit"],
   setupFilesAfterEnv: ["./setupTests.js"],
   collectCoverage: true,
   coverageDirectory: "./coverage",
