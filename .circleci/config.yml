@@ -22,6 +22,15 @@ jobs:
           root: .
           paths:
             - node_modules
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: yarn test
+      - store_test_results:
+          path: test-results
   build:
     <<: *defaults
     steps:
@@ -36,16 +45,6 @@ jobs:
             - package.json
             - LICENSE
             - README.md
-  test:
-    docker:
-      - image: cimg/base:2023.03
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run: yarn test
-      - store_test_results:
-          path: test-results
 
 # Orchestrate our job run sequence
 workflows:
@@ -53,9 +52,9 @@ workflows:
   build_and_test:
     jobs:
       - prepare
-      - build:
-          requires:
-            - test
       - test:
           requires:
             - prepare
+      - build:
+          requires:
+            - test
