@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
+  "files": ["dist/**/*"],
   "scripts": {
     "test": "jest",
     "start": "cross-env NODE_EVN=development webpack-dev-server --config webpack.config.dev.js",
