@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './lib/index.tsx',
@@ -28,10 +27,4 @@ module.exports = {
       }
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "boat-UI-React",
-      template: "./index.html"
-    }),
-  ]
 };

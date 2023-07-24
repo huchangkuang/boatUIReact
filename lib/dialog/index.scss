@@ -40,13 +40,8 @@
     align-items: center;
     justify-content: flex-end;
     .boat-button {
-      margin-left: 12px;
-      margin-right: 12px;
-      &:first-child {
-        margin-left: 0;
-      }
-      &:last-child {
-        margin-right: 0;
+      &:not(:last-child) {
+        margin-right: 12px;
       }
     }
   }
