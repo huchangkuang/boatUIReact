@@ -18,7 +18,7 @@ const Icon: FC<IconProps> = (props) => {
     fill: color,
   }
   return (
-    <svg className={cs(scm(), className)} style={{...style, ...Object.fromEntries(Object.entries(iconStyle).filter(i => i !== undefined))}} {...rest}>
+    <svg className={cs(scm(), className)} style={{...style, ...Object.fromEntries(Object.entries(iconStyle).filter(i => i[1] !== undefined))}} {...rest}>
       <use xlinkHref={`#${name}`} />
     </svg>
   );

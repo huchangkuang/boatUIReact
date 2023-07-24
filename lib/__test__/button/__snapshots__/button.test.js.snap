@@ -4,7 +4,5 @@ exports[`icon should be div 1`] = `
 <div
   className="boat-button"
   name="share"
->
-  Button
-</div>
+/>
 `;

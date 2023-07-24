@@ -3,6 +3,7 @@
 exports[`icon should be svg 1`] = `
 <svg
   className="boat-icon"
+  style={{}}
 >
   <use
     xlinkHref="#share"
