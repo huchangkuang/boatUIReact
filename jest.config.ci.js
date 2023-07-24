@@ -17,7 +17,8 @@ const config = Object.assign({}, base, {
     '**/*.{ts,tsx}',
     '!**/node_modules/**',
     '!**/*.d.ts',
-    '!./lib/index.tsx'
+    '!./lib/index.tsx',
+    '!./example/**',
   ],
 });
 
