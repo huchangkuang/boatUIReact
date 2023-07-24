@@ -1,1 +1,2 @@
-export const scopeClassMaker = (prefix: string) => (name?: string) => `${prefix}${name ? `-${name}` : ''}`;
+export const scopeClassMaker = (prefix: string) => (name?: string) =>
+  `${prefix}${name ? `-${name}` : ""}`;

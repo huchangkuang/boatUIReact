@@ -8,6 +8,7 @@
     "dist/**/*"
   ],
   "scripts": {
+    "prettier": "prettier --write \"lib/**/*.ts*\"",
     "test": "jest",
     "start": "cross-env NODE_EVN=development webpack-dev-server --config webpack.config.dev.js",
     "build": "cross-env NODE_EVN=production webpack --config webpack.config.prod.js",
@@ -45,6 +46,7 @@
     "jsdom": "^22.1.0",
     "jsdom-global": "^3.0.2",
     "node-sass": "npm:sass",
+    "prettier": "^3.0.0",
     "react-test-renderer": "^18.2.0",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
@@ -56,6 +58,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

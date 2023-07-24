@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import './importIcons'
-import './index.scss'
+import "./importIcons";
+import "./index.scss";
 import cs from "classnames";
-import {scopeClassMaker} from "../utils/scopeClassMaker";
+import { scopeClassMaker } from "../utils/scopeClassMaker";
 
-const scm = scopeClassMaker('boat-icon')
+const scm = scopeClassMaker("boat-icon");
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
 }
@@ -15,4 +15,4 @@ const Icon: FC<IconProps> = ({ name, className, ...rest }) => {
     </svg>
   );
 };
-export default Icon
+export default Icon;
