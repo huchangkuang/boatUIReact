@@ -1,0 +1,53 @@
+@import "lib/style/common";
+
+.boat-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 8px;
+  min-width: 200px;
+  max-width: 80vw;
+  min-height: 80px;
+  max-height: 80vh;
+  z-index: 99;
+  padding: 12px;
+  &-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 98;
+    background: fade-out(black, 0.5);
+  }
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &-modal {
+    display: flex;
+    flex-direction: column;
+  }
+  &-content {
+    flex-grow: 1;
+    min-height: 80px;
+  }
+  &-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .boat-button {
+      margin-left: 12px;
+      margin-right: 12px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
