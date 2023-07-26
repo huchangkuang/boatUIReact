@@ -1,0 +1,21 @@
+.boat-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  &-hasAside {
+    flex-direction: row;
+  }
+  &-header {
+    flex-shrink: 0;
+  }
+  &-content {
+    flex-shrink: 0;
+    flex-grow: 1;
+  }
+  &-aside {
+    flex-shrink: 0;
+  }
+  &-footer {
+    flex-shrink: 0;
+  }
+}

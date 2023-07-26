@@ -17,9 +17,4 @@ module.exports = Object.assign({}, base, {
       root: 'ReactDOM',
     },
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './index.html'
-    })
-  ],
 })

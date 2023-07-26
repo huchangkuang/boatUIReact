@@ -1,25 +1,16 @@
 import React, {FC, useState} from "react";
-import Dialog, {dialogModal, dialogConfirm, dialogAlert} from "../lib/dialog/dialog";
+import {DialogDemo} from "./dialog/dialogDemo";
+import {LayoutDemo} from "./layout/layoutDemo";
 
 export const App: FC = () => {
-  const [openDialog, setOpenDialog] = useState(false)
   return (
     <div>
-      <div onClick={() => setOpenDialog(true)}>dialog</div>
-      <div onClick={() => dialogModal('modal')}>modal</div>
-      <div onClick={() => dialogConfirm({
-        content: 'confirm',
-      })}>confirm</div>
-      <div onClick={() => dialogAlert({
-        content: 'alert',
-        confirmText: 'yes'
-      })}>alert</div>
-      <Dialog isOpen={openDialog} onClose={() => setOpenDialog(false)}>
-        <div>adfadsfdafasdfasdfaadfadsfdafasdfasdfa</div>
-        <div>adfadsfdafasdfasdfa</div>
-        <div>adfadsfdafasdfasdfa</div>
-        <div>adfadsfdafasdfasdfa</div>
-      </Dialog>
+      <div>dialogDemo</div>
+      <DialogDemo />
+      <div style={{border: '1px solid #eee', margin: "20px 0"}} />
+      <div>LayoutDemo</div>
+      <LayoutDemo/>
+      <div style={{border: '1px solid #eee', margin: "20px 0"}} />
     </div>
   );
 };

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`layout should be div 1`] = `
+<div
+  className="boat-layout"
+  style={
+    {
+      "height": 500,
+      "width": 400,
+    }
+  }
+>
+  <div
+    className="boat-layout-header"
+  >
+    Header
+  </div>
+  <div
+    className="boat-layout-content"
+  >
+    Content
+  </div>
+  <div
+    className="boat-layout-footer"
+  >
+    Footer
+  </div>
+</div>
+`;
