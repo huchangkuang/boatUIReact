@@ -6,15 +6,17 @@ import Aside from "../lib/layout/aside";
 import Content from "../lib/layout/content";
 import {scopeClassMaker} from "../lib/utils/scopeClassMaker";
 import './index.scss'
+import {FormLessDemo} from "./formLess/formLessDemo";
 
 const scm = scopeClassMaker('boat-app')
-type Menu = 'dialog' | 'layout'
+type Menu = 'dialog' | 'layout' | 'formLess'
 export const App: FC = () => {
-  const menuList: Menu[] = ['dialog', 'layout']
+  const menuList: Menu[] = ['dialog', 'layout', 'formLess']
   const [select, setSelect] = useState<Menu>('dialog')
   const componentMap: Record<Menu, ReactNode> = {
     dialog: <DialogDemo />,
     layout: <LayoutDemo />,
+    formLess: <FormLessDemo />
   }
   return (
     <Layout style={{minWidth: '100vw', minHeight: '100vh'}}>
