@@ -1,0 +1,20 @@
+.boat-app {
+  &-aside {
+    padding: 20px 10px;
+    border-right: 1px solid #eee;
+    & div {
+      background: #52a9f5;
+      color: #ffffff;
+      margin-bottom: 20px;
+      padding: 6px 40px;
+      border-radius: 8px;
+      &.selected {
+        background: #0e76cc;
+        font-weight: bold;
+      }
+    }
+  }
+  &-content {
+    padding: 20px;
+  }
+}
