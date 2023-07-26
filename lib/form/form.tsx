@@ -1,13 +1,9 @@
-import React, {FC} from 'react';
+import React, { FC } from "react";
 
 interface FormProps {
   formData: Record<string, any>;
 }
 const Form: FC<FormProps> = (props) => {
-  return (
-    <div>
-
-    </div>
-  );
+  return <div></div>;
 };
-export default Form
+export default Form;
