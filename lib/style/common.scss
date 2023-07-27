@@ -2,6 +2,11 @@
   box-sizing: border-box;
   font-size: 14px;
   color: #333333;
+  &::before, &::after {
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333333;
+  }
 }
 @mixin flexCenter {
   display: flex;
