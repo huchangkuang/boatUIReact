@@ -4,7 +4,6 @@ import React, {
   FC,
   PropsWithChildren,
   useContext,
-  useEffect,
   useState,
 } from "react";
 
@@ -17,11 +16,8 @@ export const FormLessContext = createContext<Record<string, any>>({});
 const FormLess: FC<FormLessProps> = (props) => {
   const { children, formData, onChange } = props;
   const [innerData, setInnerData] = useState(formData);
-  useEffect(() => {
-    onChange?.(innerData);
-  }, [innerData]);
   return (
-    <FormLessContext.Provider value={{ innerData, setInnerData }}>
+    <FormLessContext.Provider value={{ innerData, setInnerData, formData, onChange }}>
       {children}
     </FormLessContext.Provider>
   );
@@ -31,12 +27,16 @@ export interface FormLessItemProps extends PropsWithChildren {
 }
 export const FormLessItem: FC<FormLessItemProps> = (props) => {
   const { children, name } = props;
-  const { innerData, setInnerData } = useContext(FormLessContext);
+  const { innerData, setInnerData, formData, onChange } = useContext(FormLessContext);
   const newProps = {
-    value: innerData[name],
+    value: (onChange ? formData : innerData)[name],
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
-      setInnerData((data) => ({ ...data, [name]: value }));
+      if (onChange) {
+        onChange?.({ ...formData, [name]: value })
+      } else {
+        setInnerData((data) => ({ ...data, [name]: value }));
+      }
     },
   };
   if (React.Children.only(children) && React.isValidElement(children))
