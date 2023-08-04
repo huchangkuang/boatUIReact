@@ -3,6 +3,7 @@ import "./importIcons";
 import "./index.scss";
 import cs from "classnames";
 import { scopeClassMaker } from "../utils/scopeClassMaker";
+import { filterObjAttr } from "../utils/filterObjAttr";
 
 const scm = scopeClassMaker("boat-icon");
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
@@ -22,9 +23,7 @@ const Icon: FC<IconProps> = (props) => {
       className={cs(scm(), className)}
       style={{
         ...style,
-        ...Object.fromEntries(
-          Object.entries(iconStyle).filter((i) => i[1] !== undefined),
-        ),
+        ...filterObjAttr(iconStyle),
       }}
       {...rest}
     >
