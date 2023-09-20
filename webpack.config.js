@@ -23,7 +23,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader', {
+          loader: "sass-resources-loader",
+          options: {
+            resources: './lib/style/common.scss'
+          }
+        }]
       }
     ],
   },

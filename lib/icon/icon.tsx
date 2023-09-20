@@ -8,7 +8,7 @@ import { filterObjAttr } from "../utils/filterObjAttr";
 const scm = scopeClassMaker("boat-icon");
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
-  size?: number;
+  size?: number | string;
   color?: CSSProperties["color"];
 }
 const Icon: FC<IconProps> = (props) => {
