@@ -1,0 +1,122 @@
+@keyframes buttonPop {
+  from {
+    background: $light_color;
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    background: lighten($light_color, 20%);
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+.boat-button {
+  outline: none;
+  border: none;
+  margin: unset;
+  border-radius: 4px;
+  padding: 8px 16px;
+  @include flexCenter;
+  display: inline-block;
+  background: #ffffff;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+  }
+  &.boat-button-default {
+    border: 1px solid #eeeeee;
+    &:hover {
+      border: 1px solid $light_color;
+      color: $light_color;
+    }
+    &.boat-button-active {
+      border: 1px solid $theme_color;
+      color: $theme_color;
+    }
+  }
+  &.boat-button-primary {
+    border: none;
+    background: $theme_color;
+    color: #ffffff;
+    &:hover {
+      background: lighten($theme_color, 5%);
+    }
+    &.boat-button-active {
+      background: darken($theme_color, 10%);
+    }
+  }
+  &.boat-button-disabled {
+    cursor: not-allowed;
+    border: 1px solid #d9d9d9;
+    color: rgba(0,0,0,.25);
+    background-color: rgba(0,0,0,.04);
+    &:hover {
+      border: 1px solid #d9d9d9;
+      background-color: rgba(0,0,0,.04);
+      color: rgba(0,0,0,.25);
+    }
+  }
+  &.boat-button-dashed {
+    border: 1px dashed #eeeeee;
+    &:hover {
+      border: 1px dashed $light_color;
+      color: $light_color;
+    }
+    &.boat-button-active {
+      border: 1px dashed $theme_color;
+      color: $theme_color;
+    }
+    &.boat-button-disabled {
+      border: 1px dashed #d9d9d9;
+      &:hover {
+        border: 1px dashed #d9d9d9;
+        color: rgba(0,0,0,.25);
+      }
+    }
+  }
+  &.boat-button-text {
+    border: none;
+    &:hover {
+      background: #f9f9f9;
+    }
+    &.boat-button-active {
+      background: darken(#f9f9f9, 5%);
+    }
+    &.boat-button-disabled {
+      background: none;
+      border: none;
+      &:hover {
+        background: none;
+        border: none;
+      }
+    }
+  }
+  &.boat-button-link {
+    border: none;
+    color: $light_color;
+    &:hover {
+      color: lighten($light_color, 10%);
+    }
+    &.boat-button-disabled {
+      background: none;
+      border: none;
+      color: rgba(0,0,0,.25);
+      &:hover {
+        background: none;
+        border: none;
+        color: rgba(0,0,0,.25);
+      }
+    }
+  }
+  &-pop {
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: $light_color;
+    width: 100%;
+    height: 100%;
+    animation: buttonPop 300ms linear;
+  }
+}

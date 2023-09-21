@@ -6,15 +6,17 @@
 .example-app {
   &-header {
     height: 64px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     &-layout {
       height: 64px;
+      display: flex;
+      align-items: center;
     }
     &-aside {
-      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      max-width: 25%;
+      border-right: 1px solid #eeeeee;
       flex: 1;
       .name {
         margin-left: 16px;
@@ -27,31 +29,81 @@
       height: 100%;
       display: flex;
       align-items: center;
-      max-width: 75%;
-      flex: 3;
+      flex: 7;
     }
   }
   &-aside {
-    padding: 20px 10px;
-    border-right: 1px solid #eee;
-    max-width: 25%;
+    padding-left: 10px;
+    padding-top: 20px;
+    background: #f9f9f9;
     flex: 1;
-    & div {
-      background: #52a9f5;
-      color: #ffffff;
-      margin-bottom: 20px;
-      padding: 6px 40px;
-      border-radius: 8px;
-      text-align: center;
-      &.example-app-selected {
-        background: #0e76cc;
+    height: 100%;
+    overflow: auto;
+    &-menuGroup {
+      &-title {
+        padding-top: 32px;
+        padding-bottom: 16px;
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 14px;
+        border-bottom: 1px solid #eeeeee;
+        margin-bottom: 8px;
+        margin-left: 32px;
+        margin-right: 24px;
+      }
+    }
+    &-menuItem {
+      color: #333;
+      margin-bottom: 4px;
+      padding: 8px 32px;
+      border-radius: 8px 0 0 8px;
+      position: relative;
+      $brSize: 20px;
+      &:hover {
+        $brBg: rgba(255,255,255, 0.5);
+        background: $brBg;
+        cursor: pointer;
+        &::before {
+          display: block;
+          background: radial-gradient(circle at top left, transparent, transparent $brSize, $brBg $brSize, $brBg 100%);
+        }
+        &::after {
+          display: block;
+          background: radial-gradient(circle at bottom left, transparent, transparent $brSize, $brBg $brSize, $brBg 100%);
+        }
+      }
+      &::before {
+        display: none;
+        content: '';
+        position: absolute;
+        width: $brSize;
+        height: $brSize;
+        right: 0;
+        top: -$brSize;
+        background: radial-gradient(circle at top left, transparent, transparent $brSize, #fff $brSize, #fff 100%);
+      }
+      &::after {
+        display: none;
+        content: '';
+        position: absolute;
+        width: $brSize;
+        height: $brSize;
+        right: 0;
+        bottom: -$brSize;
+        background: radial-gradient(circle at bottom left, transparent, transparent $brSize, #fff $brSize, #fff 100%);
+      }
+      &__selected {
+        background: #ffffff;
         font-weight: bold;
+        &::before,&::after {
+          display: block;
+        }
       }
     }
   }
   &-content {
+    overflow: auto;
+    height: 100%;
     padding: 20px;
-    max-width: 75%;
-    flex: 3;
+    flex: 7;
   }
 }

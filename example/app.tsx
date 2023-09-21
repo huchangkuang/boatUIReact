@@ -1,24 +1,17 @@
-import React, {FC, ReactNode, useState} from "react";
-import {DialogDemo} from "./dialog/dialogDemo";
-import {LayoutDemo} from "./layout/layoutDemo";
+import React, {FC, useState} from "react";
 import Layout, {Aside, Content, Header} from "../lib/layout/layout";
 import {scopeClassMaker} from "../lib/utils/scopeClassMaker";
 import './index.scss'
-import {FormLessDemo} from "./formLess/formLessDemo";
 import {Icon} from "../lib";
+import {componentMap, Menu, menuList} from "./menu";
+import cs from "classnames";
 
 const scm = scopeClassMaker('example-app')
-type Menu = 'dialog' | 'layout' | 'formLess'
 export const App: FC = () => {
-  const menuList: Menu[] = ['dialog', 'layout', 'formLess']
-  const [select, setSelect] = useState<Menu>('dialog')
-  const componentMap: Record<Menu, ReactNode> = {
-    dialog: <DialogDemo />,
-    layout: <LayoutDemo />,
-    formLess: <FormLessDemo />
-  }
+  const [select, setSelect] = useState<Menu>('button')
+
   return (
-    <Layout style={{minWidth: '100vw', minHeight: '100vh'}}>
+    <Layout style={{width: '100vw', height: '100vh'}}>
       <Header className={scm('header')}>
         <Layout className={scm('header-layout')}>
           <Aside className={scm('header-aside')}>
@@ -30,9 +23,12 @@ export const App: FC = () => {
           </Content>
         </Layout>
       </Header>
-      <Layout>
+      <Layout style={{height: 'calc(100vh - 64px)'}}>
         <Aside className={scm('aside')}>
-          {menuList.map(i => <div className={select === i ? scm('selected') : ''} onClick={() => setSelect(i)}>{i}</div>)}
+          {menuList.map(i => <div className={scm('aside-menuGroup')}>
+            {i.title && <div className={scm('aside-menuGroup-title')}>{i.title}</div>}
+            {i.list.map(j => <div className={cs(scm('aside-menuItem'),select === j.key ? scm('aside-menuItem__selected') : '')} onClick={() => setSelect(j.key)}>{j.title}</div>)}
+          </div>)}
         </Aside>
         <Content className={scm('content')}>
           {componentMap[select]}
