@@ -1,10 +1,17 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {Button, Icon} from "../../lib";
 
 type ButtonDemoProps = {
 
 };
 export const ButtonDemo: FC<ButtonDemoProps> = (props) => {
+  const [loading, setLoading] = useState(false)
+  const onLoadingClick = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    },2000)
+  };
   return (
     <div>
       <Button>test</Button>
@@ -22,6 +29,8 @@ export const ButtonDemo: FC<ButtonDemoProps> = (props) => {
       <Button icon={<Icon name='star' />}>test</Button>
       <Button icon={<Icon name='star' />} iconPosition='right'>test</Button>
       <Button type='primary' icon={<Icon name='star' />}>test</Button>
+      <Button loading={loading} onClick={onLoadingClick}>loading</Button>
+      <Button loading={loading} onClick={onLoadingClick} type='primary'>loading</Button>
     </div>
   );
 };

@@ -10,6 +10,14 @@
     transform: scale(1.4);
   }
 }
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .boat-button {
   outline: none;
   border: none;
@@ -22,11 +30,21 @@
   vertical-align: top;
   background: #ffffff;
   position: relative;
+  transition: all 150ms linear;
   .iconWrapLeft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 4px;
   }
   .iconWrapRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 4px;
+  }
+  &-icon-loading {
+    animation: loading 500ms linear infinite;
   }
   &.boat-button-small {
     padding: 2px 4px;
@@ -37,6 +55,10 @@
   }
   &.boat-button-middle {
     padding: 6px 14px;
+    .boat-icon {
+      width: 1em;
+      height: 1em;
+    }
   }
   &.boat-button-large {
     padding: 10px 24px;

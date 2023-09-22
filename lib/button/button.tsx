@@ -2,6 +2,9 @@ import React, { FC, PropsWithChildren, ReactNode, useState } from "react";
 import cs from "classnames";
 import { scopeClassMaker } from "../utils/scopeClassMaker";
 import "./style/button.scss";
+import Icon from "../icon/icon";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
 
 const scm = scopeClassMaker("boat-button");
 export type ButtonType = "default" | "primary" | "dashed" | "text" | "link";
@@ -19,6 +22,7 @@ export interface ButtonProps
   size?: ButtonSize;
   icon?: ReactNode;
   iconPosition?: "left" | "right";
+  loading?: boolean;
 }
 const Button: FC<ButtonProps> = (props) => {
   const {
@@ -30,6 +34,7 @@ const Button: FC<ButtonProps> = (props) => {
     size = "middle",
     icon,
     iconPosition = "left",
+    loading,
     ...rest
   } = props;
   const [buttonActive, setButtonActive] = useState(false);
@@ -51,25 +56,26 @@ const Button: FC<ButtonProps> = (props) => {
       setShowPop(false);
     }, 500);
   };
+  const onBtnClick = (e) => {
+    if (loading) return;
+    onClick?.(e)
+  };
   return (
     <button
       {...rest}
-      onClick={!disabled ? onClick : undefined}
+      onClick={!disabled ? onBtnClick : undefined}
       className={cs(classes)}
       onMouseDown={() => !disabled && setButtonActive(true)}
       onMouseUp={onMouseUp}
     >
       <>
-        {icon && iconPosition === "left" && (
-          <span className="iconWrapLeft">{icon}</span>
-        )}
+        {iconPosition === "left" && (loading ? <LoadingIcon /> : (icon && <span className="iconWrapLeft">{icon}</span>))}
         <span>{children}</span>
-        {icon && iconPosition === "right" && (
-          <span className="iconWrapRight">{icon}</span>
-        )}
+        {iconPosition === "right" && (loading ? <LoadingIcon /> : (icon && <span className="iconWrapRight">{icon}</span>))}
         {showPop && <div className={scm("pop")} />}
       </>
     </button>
   );
 };
+const LoadingIcon: React.FC = () => <Icon className={scm('icon-loading')} name='loading' />
 export default Button;
