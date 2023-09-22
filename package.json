@@ -52,6 +52,7 @@
     "sass-resources-loader": "^2.2.5",
     "style-loader": "^3.3.3",
     "svg-sprite-loader": "^6.0.11",
+    "svgo-loader": "^4.0.0",
     "ts-jest": "^29.0.5",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0",

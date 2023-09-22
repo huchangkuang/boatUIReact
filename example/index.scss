@@ -18,6 +18,10 @@
       justify-content: center;
       border-right: 1px solid #eeeeee;
       flex: 1;
+      .boatImg {
+        width: 32px;
+        height: 32px;
+      }
       .name {
         margin-left: 16px;
         font-size: 18px;

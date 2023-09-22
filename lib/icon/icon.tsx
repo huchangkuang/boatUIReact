@@ -10,13 +10,14 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
   size?: number | string;
   color?: CSSProperties["color"];
+  fill?: CSSProperties["color"];
 }
 const Icon: FC<IconProps> = (props) => {
-  const { name, className, size, style, color, ...rest } = props;
+  const { name, className, size, style, color, fill, ...rest } = props;
   const iconStyle: CSSProperties = {
     width: size,
     height: size,
-    fill: color,
+    fill: color || fill,
   };
   return (
     <svg

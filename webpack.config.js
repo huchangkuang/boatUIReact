@@ -19,7 +19,32 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
+        rules: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {}
+          },
+          {
+            loader: "svgo-loader",
+            options: {
+              plugins: [{
+                name: 'removeAttrs',
+                params: {
+                  attrs: 'fill'
+                }
+              }]
+            }
+          }
+        ]
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            // maxSize: imageInlineSizeLimit,
+          },
+        },
       },
       {
         test: /\.scss$/,

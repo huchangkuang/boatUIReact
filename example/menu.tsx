@@ -4,8 +4,9 @@ import {LayoutDemo} from "./layout/layoutDemo";
 import {FormLessDemo} from "./formLess/formLessDemo";
 import {ButtonDemo} from "./button/buttonDemo";
 import {QuickStart} from "./quickStart/quickStart";
+import {IconDemo} from "./icon/iconDemo";
 
-export type Menu = 'quickStart' | 'button' | 'layout' | 'form' | 'dialog'
+export type Menu = 'quickStart' | 'icon' | 'button' | 'layout' | 'form' | 'dialog'
 export type MenuItem = {
   title: string;
   list: {key: Menu; title: ReactNode}[]
@@ -23,6 +24,10 @@ export const menuList: MenuItem[] = [
   {
     title: '通用',
     list: [
+      {
+        key: 'icon',
+        title: 'Icon 图标',
+      },
       {
         key: 'button',
         title: 'Button 按钮',
@@ -54,6 +59,7 @@ export const menuList: MenuItem[] = [
 ]
 
 export const componentMap: Record<Menu, ReactNode> = {
+  icon: <IconDemo />,
   quickStart: <QuickStart />,
   button: <ButtonDemo />,
   layout: <LayoutDemo />,
