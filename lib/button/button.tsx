@@ -1,10 +1,11 @@
-import React, { FC, PropsWithChildren, useState } from "react";
+import React, { FC, PropsWithChildren, ReactNode, useState } from "react";
 import cs from "classnames";
 import { scopeClassMaker } from "../utils/scopeClassMaker";
 import "./style/button.scss";
 
 const scm = scopeClassMaker("boat-button");
 export type ButtonType = "default" | "primary" | "dashed" | "text" | "link";
+export type ButtonSize = "small" | "middle" | "large";
 export interface ButtonProps
   extends PropsWithChildren<
     React.DetailedHTMLProps<
@@ -15,6 +16,9 @@ export interface ButtonProps
   type?: ButtonType;
   className?: string;
   disabled?: boolean;
+  size?: ButtonSize;
+  icon?: ReactNode;
+  iconPosition?: "left" | "right";
 }
 const Button: FC<ButtonProps> = (props) => {
   const {
@@ -23,6 +27,9 @@ const Button: FC<ButtonProps> = (props) => {
     className,
     children,
     onClick,
+    size = "middle",
+    icon,
+    iconPosition = "left",
     ...rest
   } = props;
   const [buttonActive, setButtonActive] = useState(false);
@@ -33,6 +40,7 @@ const Button: FC<ButtonProps> = (props) => {
     scm(`${type}`),
     buttonActive && scm("active"),
     disabled && scm("disabled"),
+    size && scm(size),
   ];
   const onMouseUp = () => {
     if (disabled) return;
@@ -51,8 +59,16 @@ const Button: FC<ButtonProps> = (props) => {
       onMouseDown={() => !disabled && setButtonActive(true)}
       onMouseUp={onMouseUp}
     >
-      {children}
-      {showPop && <div className={scm("pop")} />}
+      <>
+        {icon && iconPosition === "left" && (
+          <span className="iconWrapLeft">{icon}</span>
+        )}
+        <span>{children}</span>
+        {icon && iconPosition === "right" && (
+          <span className="iconWrapRight">{icon}</span>
+        )}
+        {showPop && <div className={scm("pop")} />}
+      </>
     </button>
   );
 };

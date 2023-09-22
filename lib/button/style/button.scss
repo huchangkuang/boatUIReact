@@ -16,10 +16,32 @@
   margin: unset;
   border-radius: 4px;
   padding: 8px 16px;
-  @include flexCenter;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
   background: #ffffff;
   position: relative;
+  .iconWrapLeft {
+    margin-right: 4px;
+  }
+  .iconWrapRight {
+    margin-left: 4px;
+  }
+  &.boat-button-small {
+    padding: 2px 4px;
+    .boat-icon {
+      width: 1em;
+      height: 1em;
+    }
+  }
+  &.boat-button-middle {
+    padding: 6px 14px;
+  }
+  &.boat-button-large {
+    padding: 10px 24px;
+    font-size: 16px;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -28,10 +50,16 @@
     &:hover {
       border: 1px solid $light_color;
       color: $light_color;
+      .boat-icon {
+        fill: $light_color;
+      }
     }
     &.boat-button-active {
       border: 1px solid $theme_color;
       color: $theme_color;
+      .boat-icon {
+        fill: $theme_color;
+      }
     }
   }
   &.boat-button-primary {
@@ -44,12 +72,18 @@
     &.boat-button-active {
       background: darken($theme_color, 10%);
     }
+    .boat-icon {
+      fill: white;
+    }
   }
   &.boat-button-disabled {
     cursor: not-allowed;
     border: 1px solid #d9d9d9;
     color: rgba(0,0,0,.25);
     background-color: rgba(0,0,0,.04);
+    .boat-icon {
+      fill: rgba(0,0,0,.25);
+    }
     &:hover {
       border: 1px solid #d9d9d9;
       background-color: rgba(0,0,0,.04);
