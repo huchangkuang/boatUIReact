@@ -3,8 +3,6 @@ import cs from "classnames";
 import { scopeClassMaker } from "../utils/scopeClassMaker";
 import "./style/button.scss";
 import Icon from "../icon/icon";
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
 
 const scm = scopeClassMaker("boat-button");
 export type ButtonType = "default" | "primary" | "dashed" | "text" | "link";
