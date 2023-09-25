@@ -2,10 +2,10 @@ const base = require('./webpack.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = Object.assign({}, base, {
   mode: 'development',
-  entry: './example/index.tsx',
+  entry: './docs/index.tsx',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './example/index.html'
+      template: './docs/index.html'
     })
   ],
 })

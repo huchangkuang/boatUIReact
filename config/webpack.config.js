@@ -4,7 +4,7 @@ module.exports = {
   entry: './lib/index.tsx',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist/lib'),
+    path: path.resolve(__dirname, '../dist/lib'),
     library: "boatUIReact",
     libraryTarget: "umd"
   },

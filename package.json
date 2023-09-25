@@ -10,8 +10,9 @@
   "scripts": {
     "prettier": "prettier --write \"lib/**/*.ts*\"",
     "test": "jest",
-    "start": "cross-env NODE_EVN=development webpack-dev-server --config webpack.config.dev.js",
-    "build": "cross-env NODE_EVN=production webpack --config webpack.config.prod.js",
+    "start": "cross-env NODE_EVN=development webpack-dev-server --config config/webpack.config.dev.js",
+    "build": "cross-env NODE_EVN=production webpack --config config/webpack.config.prod.js",
+    "doc": "cross-env NODE_EVN=production webpack --config config/webpack.config.docs.js",
     "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_FILE=./test-results/jest/results.xml jest --config=jest.config.ci.js"
   },
   "repository": {
