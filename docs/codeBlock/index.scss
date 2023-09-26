@@ -1,0 +1,11 @@
+pre {
+    font-family: sans-serif;
+    background: #1f1f1f !important;
+    border-radius: 4px;
+    padding: 4px 8px;
+    .lineNum {
+        display: inline-block;
+        min-width: 28px;
+        color: #ccc;
+    }
+}

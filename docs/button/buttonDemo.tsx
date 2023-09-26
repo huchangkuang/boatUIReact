@@ -3,14 +3,9 @@ import {Button, Icon} from "../../lib";
 import {scm} from "../app";
 import {scopeClassMaker} from "../../lib/utils/scopeClassMaker";
 import "./index.scss"
-import hljs from 'highlight.js'
-import 'highlight.js/styles/dark.css'
-import typescript from 'highlight.js/lib/languages/typescript';
+import { CodeBlock } from '../codeBlock/codeBlock';
 
-hljs.registerLanguage('javascript', typescript);
-
-const basicUseCode = `
-import React, {FC} from 'react';
+const basicUseCode = `import React, {FC} from 'react';
 
 export const Demo: FC = () => {
   return (
@@ -22,8 +17,7 @@ export const Demo: FC = () => {
     <Button type='link'>link</Button>
   </>
   );
-};
-`
+};`
 const sc = scopeClassMaker('buttonDemo')
 export const ButtonDemo: FC = (props) => {
   const [loading, setLoading] = useState(false)
@@ -50,9 +44,7 @@ export const ButtonDemo: FC = (props) => {
           <Button type='dashed'>dashed</Button>
           <Button type='link'>link</Button>
         </div>
-        <pre>
-          <code className='language-xml' dangerouslySetInnerHTML={{__html: hljs.highlight(basicUseCode, {language: 'xml'}).value}}></code>
-        </pre>
+        <CodeBlock code={basicUseCode} />
       </div>
       <Button size='small'>test</Button>
       <Button size='large'>test</Button>
