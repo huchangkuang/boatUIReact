@@ -4,6 +4,30 @@
   padding: 0;
 }
 .example-app {
+  &-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  &-desc {
+    margin-bottom: 24px;
+  }
+  &-sbuTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  &-codeBox {
+    border: 1px solid #eeeeee;
+    padding: 16px 24px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    &-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+  }
   &-header {
     height: 64px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);

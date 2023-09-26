@@ -6,9 +6,9 @@ import boatImg from './public/assets/boat.png'
 import {componentMap, Menu, menuList} from "./menu";
 import cs from "classnames";
 
-const scm = scopeClassMaker('example-app')
+export const scm = scopeClassMaker('example-app')
 export const App: FC = () => {
-  const [select, setSelect] = useState<Menu>('icon')
+  const [select, setSelect] = useState<Menu>('button')
 
   return (
     <Layout style={{width: '100vw', height: '100vh'}}>
