@@ -2,11 +2,15 @@ import React, {FC} from "react"
 import { Highlight, themes } from "prism-react-renderer"
 import "./index.scss"
 
-export const CodeBlock: FC<{code: string}> = ({code}) => (
+type CodeBlockProps = {
+  code: string;
+  language?: string;
+}
+export const CodeBlock: FC<CodeBlockProps> = ({code, language = 'tsx'}) => (
     <Highlight
       theme={themes.shadesOfPurple}
       code={code}
-      language="tsx"
+      language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre style={style}>

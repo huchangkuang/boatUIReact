@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, useRef, useState} from "react";
 import Layout, {Aside, Content, Header} from "../lib/layout/layout";
 import {scopeClassMaker} from "../lib/utils/scopeClassMaker";
 import './index.scss'
@@ -8,8 +8,8 @@ import cs from "classnames";
 
 export const scm = scopeClassMaker('example-app')
 export const App: FC = () => {
-  const [select, setSelect] = useState<Menu>('icon')
-
+  const [select, setSelect] = useState<Menu>('layout')
+  const placeRef = useRef<HTMLDivElement>(null)
   return (
     <Layout style={{width: '100vw', height: '100vh'}}>
       <Header className={scm('header')}>
@@ -27,10 +27,14 @@ export const App: FC = () => {
         <Aside className={scm('aside')}>
           {menuList.map(i => <div key={i.title} className={scm('aside-menuGroup')}>
             {i.title && <div className={scm('aside-menuGroup-title')}>{i.title}</div>}
-            {i.list.map(j => <div key={j.key} className={cs(scm('aside-menuItem'),select === j.key ? scm('aside-menuItem__selected') : '')} onClick={() => setSelect(j.key)}>{j.title}</div>)}
+            {i.list.map(j => <div key={j.key} className={cs(scm('aside-menuItem'),select === j.key ? scm('aside-menuItem__selected') : '')} onClick={() => {
+              setSelect(j.key)
+              placeRef.current?.scrollIntoView({block: 'start'})
+            }}>{j.title}</div>)}
           </div>)}
         </Aside>
         <Content className={scm('content')}>
+          <div ref={placeRef} className='place' />
           {componentMap[select]}
         </Content>
       </Layout>

@@ -4,34 +4,81 @@ import Header from "../../lib/layout/header";
 import Content from "../../lib/layout/content";
 import Footer from "../../lib/layout/footer";
 import Aside from "../../lib/layout/aside";
+import './index.scss'
+import {scopeClassMaker} from "../../lib/utils/scopeClassMaker";
+import {scm} from "../app";
+import {CodeBlock} from "../components/codeBlock/codeBlock";
+import {CodeBox} from "../components/codeBox/codeBox";
+import {basicUseCode} from "./useCode";
 
+const sc = scopeClassMaker('layoutDemo')
 export const LayoutDemo: FC = () => {
+  const headerStyle: React.CSSProperties = {
+    textAlign: 'center',
+    color: '#fff',
+    height: 64,
+    paddingInline: 50,
+    lineHeight: '64px',
+    backgroundColor: '#C5E99B',
+  };
+
+  const contentStyle: React.CSSProperties = {
+    textAlign: 'center',
+    minHeight: 120,
+    lineHeight: '120px',
+    color: '#fff',
+    backgroundColor: '#8FBC94',
+  };
+
+  const siderStyle: React.CSSProperties = {
+    textAlign: 'center',
+    color: '#fff',
+    padding: '0 20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#519157',
+  };
+
+  const footerStyle: React.CSSProperties = {
+    textAlign: 'center',
+    color: '#fff',
+    lineHeight: '120px',
+    backgroundColor: '#C5E99B',
+  };
   return (
-    <div>
-      <div>demo1</div>
-      <Layout style={{height: 500, width: 400}}>
-        <Header style={{background: '#eee'}}>Header</Header>
-        <Content style={{background: '#ccc'}}>Content</Content>
-        <Footer style={{background: '#eee'}}>Footer</Footer>
-      </Layout>
-      <div>demo2</div>
-      <Layout style={{height: 500, width: 400}}>
-        <Header style={{background: '#eee'}}>Header</Header>
-        <Layout>
-          <Aside style={{background: '#ccc'}}>Aside</Aside>
-          <Content style={{background: '#aaa'}}>Content</Content>
-        </Layout>
-        <Footer style={{background: '#eee'}}>Footer</Footer>
-      </Layout>
-      <div>demo3</div>
-      <Layout style={{height: 500, width: 400}}>
-        <Aside style={{background: '#ccc'}}>Aside</Aside>
-        <Layout>
-          <Header style={{background: '#eee'}}>Header</Header>
-          <Content style={{background: '#aaa'}}>Content</Content>
-          <Footer style={{background: '#eee'}}>Footer</Footer>
-        </Layout>
-      </Layout>
+    <div className={sc()}>
+      <div className={scm('title')}>Layout 布局</div>
+      <div className={scm('desc')}>协助进行页面级整体布局</div>
+      <div className={scm('sbuTitle')}>如何使用</div>
+      <CodeBox title='基本用法'>
+        <div className={sc('use')}>
+          <Layout style={{ marginBottom: 32}}>
+            <Header style={headerStyle}>Header</Header>
+            <Content style={contentStyle}>Content</Content>
+            <Footer style={footerStyle}>Footer</Footer>
+          </Layout>
+
+          <Layout style={{ marginBottom: 32}}>
+            <Header style={headerStyle}>Header</Header>
+            <Layout>
+              <Aside style={siderStyle}>Aside</Aside>
+              <Content style={contentStyle}>Content</Content>
+            </Layout>
+            <Footer style={footerStyle}>Footer</Footer>
+          </Layout>
+
+          <Layout style={{ marginBottom: 32}}>
+            <Aside style={siderStyle}>Aside</Aside>
+            <Layout>
+              <Header style={headerStyle}>Header</Header>
+              <Content style={contentStyle}>Content</Content>
+              <Footer style={footerStyle}>Footer</Footer>
+            </Layout>
+          </Layout>
+        </div>
+        <CodeBlock code={basicUseCode} />
+      </CodeBox>
     </div>
   );
 };
