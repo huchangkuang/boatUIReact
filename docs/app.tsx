@@ -8,7 +8,7 @@ import cs from "classnames";
 
 export const scm = scopeClassMaker('example-app')
 export const App: FC = () => {
-  const [select, setSelect] = useState<Menu>('button')
+  const [select, setSelect] = useState<Menu>('icon')
 
   return (
     <Layout style={{width: '100vw', height: '100vh'}}>
@@ -25,9 +25,9 @@ export const App: FC = () => {
       </Header>
       <Layout style={{height: 'calc(100vh - 64px)'}}>
         <Aside className={scm('aside')}>
-          {menuList.map(i => <div className={scm('aside-menuGroup')}>
+          {menuList.map(i => <div key={i.title} className={scm('aside-menuGroup')}>
             {i.title && <div className={scm('aside-menuGroup-title')}>{i.title}</div>}
-            {i.list.map(j => <div className={cs(scm('aside-menuItem'),select === j.key ? scm('aside-menuItem__selected') : '')} onClick={() => setSelect(j.key)}>{j.title}</div>)}
+            {i.list.map(j => <div key={j.key} className={cs(scm('aside-menuItem'),select === j.key ? scm('aside-menuItem__selected') : '')} onClick={() => setSelect(j.key)}>{j.title}</div>)}
           </div>)}
         </Aside>
         <Content className={scm('content')}>

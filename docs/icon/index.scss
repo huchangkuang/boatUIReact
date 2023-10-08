@@ -1,0 +1,37 @@
+.iconDemo {
+  &-iconsBox {
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    &-item {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 8px;
+      padding: 4px;
+      &-name {
+        margin-top: 12px;
+      }
+      &:hover {
+        background: #8FBC94;
+        color: #ffffff;
+        cursor: pointer;
+        .boat-icon {
+          fill: #ffffff;
+        }
+      }
+    }
+  }
+  &-use {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+}
