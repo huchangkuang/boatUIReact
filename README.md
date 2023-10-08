@@ -9,3 +9,5 @@ a simple use ui component library
 npm i boat-ui-react
 yarn add boat-ui-react
 ```
+## doc page
+https://huchangkuang.gitee.io/boat-ui-react-page/doc.html
