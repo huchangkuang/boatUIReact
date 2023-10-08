@@ -8,7 +8,7 @@ export const Demo: FC = () => {
       <Icon name='beauty' />
     </>
   );
-};`
+};`;
 
 export const sizeUseCode = `import React, {FC} from 'react';
 
@@ -20,7 +20,7 @@ export const Demo: FC = () => {
       <Icon name='beauty' size='32px' />
     </>
   );
-};`
+};`;
 
 export const colorUseCode = `import React, {FC} from 'react';
 
@@ -32,4 +32,4 @@ export const Demo: FC = () => {
       <Icon name='beauty' size='32px' color='#C5E99B' />
     </>
   );
-};`
+};`;

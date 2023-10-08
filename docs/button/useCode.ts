@@ -10,7 +10,7 @@ export const Demo: FC = () => {
       <Button type='link'>link</Button>
     </>
   );
-};`
+};`;
 
 export const sizeUseCode = `import React, {FC} from 'react';
 
@@ -22,7 +22,7 @@ export const Demo: FC = () => {
       <Button size='large'>large</Button>
     </>
   );
-};`
+};`;
 
 export const disabledUseCode = `import React, {FC} from 'react';
 
@@ -36,7 +36,7 @@ export const Demo: FC = () => {
       <Button type='link' disabled>test</Button>
     </>
   );
-};`
+};`;
 
 export const iconUseCode = `import React, {FC} from 'react';
 
@@ -58,4 +58,4 @@ export const Demo: FC = () => {
       <Button loading={loading} onClick={onLoadingClick} loadIcon='star'>custom loading icon</Button>
     </>
   );
-};`
+};`;
