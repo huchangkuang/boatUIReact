@@ -21,6 +21,7 @@ export interface ButtonProps
   icon?: ReactNode;
   iconPosition?: "left" | "right";
   loading?: boolean;
+  loadIcon?: string;
 }
 const Button: FC<ButtonProps> = (props) => {
   const {
@@ -33,6 +34,7 @@ const Button: FC<ButtonProps> = (props) => {
     icon,
     iconPosition = "left",
     loading,
+    loadIcon,
     ...rest
   } = props;
   const [buttonActive, setButtonActive] = useState(false);
@@ -67,13 +69,13 @@ const Button: FC<ButtonProps> = (props) => {
       onMouseUp={onMouseUp}
     >
       <>
-        {iconPosition === "left" && (loading ? <LoadingIcon /> : (icon && <span className="iconWrapLeft">{icon}</span>))}
+        {iconPosition === "left" && (loading ? <LoadingIcon loadIcon={loadIcon} /> : (icon && <span className="iconWrapLeft">{icon}</span>))}
         <span>{children}</span>
-        {iconPosition === "right" && (loading ? <LoadingIcon /> : (icon && <span className="iconWrapRight">{icon}</span>))}
+        {iconPosition === "right" && (loading ? <LoadingIcon loadIcon={loadIcon} /> : (icon && <span className="iconWrapRight">{icon}</span>))}
         {showPop && <div className={scm("pop")} />}
       </>
     </button>
   );
 };
-const LoadingIcon: React.FC = () => <Icon className={scm('icon-loading')} name='loading' />
+const LoadingIcon: React.FC<{loadIcon?: string}> = ({loadIcon}) => <Icon className={scm('icon-loading')} name={loadIcon || 'loading'} />
 export default Button;
