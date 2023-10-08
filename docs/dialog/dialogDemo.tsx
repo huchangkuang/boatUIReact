@@ -4,39 +4,51 @@ import Dialog, {
   dialogConfirm,
   dialogModal,
 } from "../../lib/dialog/dialog";
+import {scm} from "../app";
+import {scopeClassMaker} from "../../lib/utils/scopeClassMaker";
+import {CodeBox} from "../components/codeBox/codeBox";
+import {Button} from "../../lib";
+import {CodeBlock} from "../components/codeBlock/codeBlock";
+import {basicUseCode, fnUseCode} from "./useCode";
+import './index.scss';
 
+const sc = scopeClassMaker("dialogDemo");
 export const DialogDemo: FC = () => {
   const [openDialog, setOpenDialog] = useState(false);
-
+  const content = <>
+    <div>Some contents...</div>
+    <div>Some contents...</div>
+    <div>Some contents...</div>
+    <div>Some contents...</div>
+  </>
   return (
     <div>
-      <div onClick={() => setOpenDialog(true)}>dialog</div>
-      <div onClick={() => dialogModal("modal")}>modal</div>
-      <div
-        onClick={() =>
-          dialogConfirm({
-            content: "confirm",
-          })
-        }
-      >
-        confirm
-      </div>
-      <div
-        onClick={() =>
-          dialogAlert({
+      <div className={scm("title")}>Dialog 对话框</div>
+      <div className={scm("desc")}>需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 Dialog 在当前页面正中打开一个浮层，承载相应的操作</div>
+      <div className={scm("sbuTitle")}>如何使用</div>
+      <CodeBox title="基本用法">
+        <div className={sc("use")}>
+          <Button type='primary' onClick={() => setOpenDialog(true)}>open dialog</Button>
+          <Dialog title='Basic Use' isOpen={openDialog} onClose={() => setOpenDialog(false)}>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+          </Dialog>
+        </div>
+        <CodeBlock code={basicUseCode} />
+      </CodeBox>
+      <CodeBox title="函数使用">
+        <div className={sc("use")}>
+          <Button type='primary' onClick={() => dialogModal(content)}>modal</Button>
+          <Button type='primary' onClick={() => dialogConfirm({content: "confirm"})}>confirm</Button>
+          <Button type='primary' onClick={() => dialogAlert({
             content: "alert",
             confirmText: "yes",
-          })
-        }
-      >
-        alert
-      </div>
-      <Dialog isOpen={openDialog} onClose={() => setOpenDialog(false)}>
-        <div>adfadsfdafasdfasdfaadfadsfdafasdfasdfa</div>
-        <div>adfadsfdafasdfasdfa</div>
-        <div>adfadsfdafasdfasdfa</div>
-        <div>adfadsfdafasdfasdfa</div>
-      </Dialog>
+          })}>alert</Button>
+        </div>
+        <CodeBlock code={fnUseCode} />
+      </CodeBox>
     </div>
   );
 };

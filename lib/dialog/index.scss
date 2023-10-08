@@ -13,6 +13,21 @@
   max-height: 80vh;
   z-index: 99;
   padding: 12px;
+  opacity: 0;
+  transition: all 150ms linear;
+  &.show {
+    opacity: 1;
+  }
+  &-header {
+    @include spaceBetween;
+    margin-bottom: 4px;
+  }
+  &-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  &-close {
+  }
   &-mask {
     position: fixed;
     top: 0;
@@ -21,11 +36,11 @@
     height: 100vh;
     z-index: 98;
     background: fade-out(black, 0.5);
-  }
-  &-close {
-    position: absolute;
-    top: 0;
-    right: 0;
+    opacity: 0;
+    transition: all 150ms linear;
+    &.show {
+      opacity: 1;
+    }
   }
   &-modal {
     display: flex;
