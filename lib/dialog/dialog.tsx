@@ -16,6 +16,7 @@ export interface DialogProps extends PropsWithChildren {
   className?: string;
   isOpen: boolean;
   title?: string;
+  hideHeader?: boolean;
   onClose?: React.MouseEventHandler;
   disableMaskClick?: boolean;
 }
@@ -27,6 +28,7 @@ const Dialog: FC<DialogProps> = (props) => {
     onClose,
     disableMaskClick = false,
     children,
+    hideHeader,
     title,
   } = props;
   const [show, setShow] = useState(isOpen)
@@ -47,7 +49,7 @@ const Dialog: FC<DialogProps> = (props) => {
             onClick={!disableMaskClick ? onClose : undefined}
           />
           <div className={cs(scm(), className, show && 'show')}>
-            <div className={scm('header')}>
+            {!hideHeader && <div className={scm('header')}>
               <div className={scm('title')}>{title}</div>
               <Icon
                 className={scm("close")}
@@ -56,7 +58,7 @@ const Dialog: FC<DialogProps> = (props) => {
                 color="#666"
                 onClick={onClose}
               />
-            </div>
+            </div>}
             {children}
           </div>
         </Fragment>,
@@ -64,8 +66,8 @@ const Dialog: FC<DialogProps> = (props) => {
       )
     : null;
 };
-const dialogModal = (content?: ReactNode, options?: DialogProps) => {
-  const { children, ...rest } = options || {};
+const dialogModal = (options?: Partial<DialogProps> & {content?: ReactNode}) => {
+  const { content, children, ...rest } = options || {};
   const onClose = () => {
     root.render(cloneElement(component, { isOpen: false }))
     root.unmount()
@@ -84,6 +86,8 @@ const dialogModal = (content?: ReactNode, options?: DialogProps) => {
 };
 export interface DialogConfirmOptions {
   content: ReactNode;
+  title?: string;
+  hideHeader?: boolean;
   confirmText?: string;
   cancelText?: string;
   onCancel?: () => void;
@@ -94,6 +98,8 @@ const dialogConfirm = (options: DialogConfirmOptions) => {
     content,
     onConfirm,
     onCancel,
+    title,
+    hideHeader,
     confirmText = "确认",
     cancelText = "取消",
   } = options;
@@ -118,7 +124,9 @@ const dialogConfirm = (options: DialogConfirmOptions) => {
       </div>
     </div>
   );
-  const _close = dialogModal(content, {
+  const _close = dialogModal({
+    title,
+    hideHeader,
     children: component,
     isOpen: true,
     onClose: close,
@@ -126,11 +134,13 @@ const dialogConfirm = (options: DialogConfirmOptions) => {
 };
 export interface DialogAlertOptions {
   content: ReactNode;
+  title?: string;
+  hideHeader?: boolean;
   confirmText?: string;
   onConfirm?: () => void;
 }
 const dialogAlert = (options: DialogAlertOptions) => {
-  const { content, onConfirm, confirmText = "知道了" } = options;
+  const { content, onConfirm, confirmText = "知道了", hideHeader, title } = options;
   const confirm = () => {
     _close();
     onConfirm?.();
@@ -145,7 +155,9 @@ const dialogAlert = (options: DialogAlertOptions) => {
       </div>
     </div>
   );
-  const _close = dialogModal(content, {
+  const _close = dialogModal({
+    title,
+    hideHeader,
     children: component,
     isOpen: true,
     onClose: close,
