@@ -3,9 +3,9 @@ import "./index.scss"
 import {scm} from "../app";
 import {scopeClassMaker} from "../../lib/utils/scopeClassMaker";
 import {CodeBlock} from "../components/codeBlock/codeBlock";
-import {basicUseCode} from "../dialog/useCode";
 import {CodeBox} from "../components/codeBox/codeBox";
 import Scroll from "../../lib/scroll/scroll";
+import {basicUseCode} from "./useCode";
 
 const sc = scopeClassMaker("scrollDemo");
 export const ScrollDemo: FC = (props) => {

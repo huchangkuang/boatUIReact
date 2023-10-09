@@ -3,11 +3,9 @@ export const basicUseCode = `import React, {FC} from 'react';
 export const Demo: FC = () => {
   return (
     <>
-      <Button>default</Button>
-      <Button type='primary'>primary</Button>
-      <Button type='text'>text</Button>
-      <Button type='dashed'>dashed</Button>
-      <Button type='link'>link</Button>
+      <Scroll height={300}>
+        {new Array(100).fill('').map((i, index) => <div key={index}>some content...</div>)}
+      </Scroll>
     </>
   );
 };`;
