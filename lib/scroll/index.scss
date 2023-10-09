@@ -1,0 +1,25 @@
+.boat-scroll {
+  overflow: hidden;
+  position: relative;
+  &-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: scroll;
+    z-index: 1;
+  }
+  &-scrollBar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 2;
+    opacity: 0;
+    transition: all 100ms linear;
+    &.show {
+      opacity: 1;
+    }
+  }
+}

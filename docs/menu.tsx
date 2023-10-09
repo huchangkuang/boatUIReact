@@ -5,6 +5,7 @@ import { FormLessDemo } from "./formLess/formLessDemo";
 import { ButtonDemo } from "./button/buttonDemo";
 import { QuickStart } from "./quickStart/quickStart";
 import { IconDemo } from "./icon/iconDemo";
+import {ScrollDemo} from "./scroll/scrollDemo";
 
 export type Menu =
   | "quickStart"
@@ -12,7 +13,8 @@ export type Menu =
   | "button"
   | "layout"
   | "form"
-  | "dialog";
+  | "dialog"
+  | "scroll";
 export type MenuItem = {
   title: string;
   list: { key: Menu; title: ReactNode }[];
@@ -41,6 +43,10 @@ export const menuList: MenuItem[] = [
       {
         key: "layout",
         title: "Layout 布局",
+      },
+      {
+        key: "scroll",
+        title: "Scroll 滚动条",
       },
     ],
   },
@@ -71,4 +77,5 @@ export const componentMap: Record<Menu, ReactNode> = {
   layout: <LayoutDemo />,
   form: <FormLessDemo />,
   dialog: <DialogDemo />,
+  scroll: <ScrollDemo />,
 };
