@@ -5,7 +5,7 @@ import { FormLessDemo } from "./formLess/formLessDemo";
 import { ButtonDemo } from "./button/buttonDemo";
 import { QuickStart } from "./quickStart/quickStart";
 import { IconDemo } from "./icon/iconDemo";
-import {ScrollDemo} from "./scroll/scrollDemo";
+import { ScrollDemo } from "./scroll/scrollDemo";
 
 export type Menu =
   | "quickStart"
