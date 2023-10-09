@@ -7,6 +7,7 @@ module.exports = Object.assign({}, base, {
   entry: path.resolve(__dirname, '../docs/index.tsx'),
   output: {
     path: path.resolve(__dirname, '../build'),
+    filename: "[name].[chunkhash:8].js",
   },
   plugins: [
     new HtmlWebpackPlugin({
