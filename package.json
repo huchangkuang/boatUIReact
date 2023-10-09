@@ -5,7 +5,7 @@
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
   "files": [
-    "dist/**/*"
+    "dist/lib/**/*"
   ],
   "scripts": {
     "prettier": "prettier --write \"lib/**/*.ts*\"",
