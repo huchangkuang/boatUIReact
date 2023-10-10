@@ -49,8 +49,6 @@ const Scroll: FC<ScrollProps> = (props) => {
   };
   console.log(scrollTop);
   const scrollBarStyle = {
-    width: scrollBarWidth,
-    borderRadius: scrollBarWidth / 2,
     height: scrollBarHeight,
     transform: `translateY(${
       (scrollTop / scrollHeight.current) * wrapHeight.current
