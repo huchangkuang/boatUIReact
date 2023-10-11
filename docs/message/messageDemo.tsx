@@ -5,8 +5,7 @@ import { scopeClassMaker } from "../../lib/utils/scopeClassMaker";
 import { CodeBlock } from "../components/codeBlock/codeBlock";
 import { CodeBox } from "../components/codeBox/codeBox";
 import { basicUseCode } from "./useCode";
-import { Button } from "../../lib";
-import message from "../../lib/message/message";
+import { Button, message } from "../../lib";
 
 const sc = scopeClassMaker("messageDemo");
 export const MessageDemo: FC = (props) => {
