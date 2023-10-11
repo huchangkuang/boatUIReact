@@ -94,8 +94,18 @@ export const QuickStart: FC = () => {
         <div className={sc("components-item")}>
           <div className={sc("components-item-header")}>Message 全局提示</div>
           <div className={sc("components-item-body")}>
-            <Button type='primary' onClick={() => message.success('this is success message')}>success</Button>
-            <Button type='primary' onClick={() => message.error('this is error message')}>error</Button>
+            <Button
+              type="primary"
+              onClick={() => message.success("this is success message")}
+            >
+              success
+            </Button>
+            <Button
+              type="primary"
+              onClick={() => message.error("this is error message")}
+            >
+              error
+            </Button>
           </div>
         </div>
       </div>

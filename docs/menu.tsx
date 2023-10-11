@@ -6,7 +6,7 @@ import { ButtonDemo } from "./button/buttonDemo";
 import { QuickStart } from "./quickStart/quickStart";
 import { IconDemo } from "./icon/iconDemo";
 import { ScrollDemo } from "./scroll/scrollDemo";
-import {MessageDemo} from "./message/messageDemo";
+import { MessageDemo } from "./message/messageDemo";
 
 export type Menu =
   | "quickStart"
