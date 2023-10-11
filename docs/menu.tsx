@@ -6,6 +6,7 @@ import { ButtonDemo } from "./button/buttonDemo";
 import { QuickStart } from "./quickStart/quickStart";
 import { IconDemo } from "./icon/iconDemo";
 import { ScrollDemo } from "./scroll/scrollDemo";
+import {MessageDemo} from "./message/messageDemo";
 
 export type Menu =
   | "quickStart"
@@ -14,7 +15,8 @@ export type Menu =
   | "layout"
   | "form"
   | "dialog"
-  | "scroll";
+  | "scroll"
+  | "message";
 export type MenuItem = {
   title: string;
   list: { key: Menu; title: ReactNode }[];
@@ -66,6 +68,10 @@ export const menuList: MenuItem[] = [
         key: "dialog",
         title: "Dialog 对话框",
       },
+      {
+        key: "message",
+        title: "Message 全局提示",
+      },
     ],
   },
 ];
@@ -78,4 +84,5 @@ export const componentMap: Record<Menu, ReactNode> = {
   form: <FormLessDemo />,
   dialog: <DialogDemo />,
   scroll: <ScrollDemo />,
+  message: <MessageDemo />,
 };

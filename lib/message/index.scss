@@ -1,0 +1,21 @@
+.boat-message {
+  display: flex;
+  padding: 8px 12px;
+  border-radius: 8px;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -100%);
+  background: #ffffff;
+  transition: all 50ms ease-out;
+  max-width: 80%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  .boat-icon {
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+  &-content {
+    word-break: break-all;
+    white-space: pre;
+  }
+}
