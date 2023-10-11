@@ -47,7 +47,6 @@ const Scroll: FC<ScrollProps> = (props) => {
     height,
     maxHeight,
   };
-  console.log(scrollTop);
   const scrollBarStyle = {
     height: scrollBarHeight,
     transform: `translateY(${
