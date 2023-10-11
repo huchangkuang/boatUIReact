@@ -1,6 +1,12 @@
 const base = require('./webpack.config')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const fs = require("fs");
 
+const outPath = path.resolve(__dirname, '../dist')
+if (fs.existsSync(outPath)) {
+  fs.rmSync(outPath, {recursive: true})
+}
 module.exports = Object.assign({}, base, {
   mode: 'production',
   externals: {
