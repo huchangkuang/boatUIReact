@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Icon } from "../../lib";
+import {Icon, message} from "../../lib";
 import { scm } from "../app";
 import { scopeClassMaker } from "../../lib/utils/scopeClassMaker";
 import "./index.scss";
@@ -35,7 +35,7 @@ export const IconDemo: FC<IconDemoProps> = (props) => {
             onClick={() => {
               if (navigator.clipboard) {
                 navigator.clipboard.writeText(i);
-                // TODO 复制成功
+                message.success('复制成功')
               }
             }}
           >
