@@ -42,26 +42,19 @@ const Scroll: FC<ScrollProps> = (props) => {
   const wrapHeight = useRef(0);
   const [showScrollBar, setShowScrollBar] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
-  const mouseStart = useRef(0);
+  const curMouseY = useRef(0);
   const wrapStyle = {
     height,
     maxHeight,
   };
+  const dragging = useRef(false)
   const scrollBarStyle = {
     height: scrollBarHeight,
-    transform: `translateY(${
-      (scrollTop / scrollHeight.current) * wrapHeight.current
-    }px)`,
+    transform: `translateY(${scrollTop}px)`,
   };
-  const onScroll = () => {
+  const onScroll = (e) => {
     setShowScrollBar(true);
-    setScrollTop(contentRef.current?.scrollTop ?? 0);
-    if (isScroll) {
-      clearTimeout(isScroll);
-    }
-    isScroll = setTimeout(() => {
-      setShowScrollBar(false);
-    }, 1000);
+    setScrollTop((e.currentTarget.scrollTop / scrollHeight.current) * wrapHeight.current);
   };
   const initBar = (count = 0) => {
     if (count > 20) return;
@@ -80,26 +73,56 @@ const Scroll: FC<ScrollProps> = (props) => {
     }
   };
   const onMouseDown = (e) => {
-    mouseStart.current = e.pageY;
-    if (isScroll) {
-      clearTimeout(isScroll);
+    dragging.current = true
+    curMouseY.current = e.clientY;
+  };
+
+  const onMouseMove = (e) => {
+    if (dragging.current) {
+      const dis = e.clientY - curMouseY.current;
+      curMouseY.current = e.clientY;
+      setScrollTop(n => {
+        if (n < 0) {
+          return 0;
+        }
+        const maxN = scrollHeight.current - wrapHeight.current
+        if (n > maxN) {
+          return maxN;
+        }
+        return n + dis
+      });
     }
   };
-  const onMouseMove = (e) => {
-    const dis = e.pageY - mouseStart.current;
-    mouseStart.current = e.pageY;
-    setScrollTop((n) =>
-      Math.min(n + dis, scrollHeight.current - wrapHeight.current),
-    );
-  };
-  const onMouseUp = (e) => {
+  const hideBar = () => {
     isScroll = setTimeout(() => {
       setShowScrollBar(false);
     }, 1000);
+  }
+  const showBar = () => {
+    setShowScrollBar(true)
+    if (isScroll) {
+      clearTimeout(isScroll);
+    }
+  }
+  const onMouseUp = (e) => {
+    dragging.current = false
+    hideBar()
   };
+  const onMouseEnter = () => {
+    showBar()
+  }
+  const onMouseLeave = () => {
+    hideBar()
+  }
   useEffect(() => {
     setScrollBarWidth(calcScrollWidth());
     initBar();
+    document.addEventListener('mousemove', onMouseMove)
+    document.addEventListener('mouseup', onMouseUp)
+    return () => {
+      document.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mouseup', onMouseUp)
+    }
   }, []);
   return (
     <div
@@ -118,9 +141,9 @@ const Scroll: FC<ScrollProps> = (props) => {
       </div>
       {scrollBarWidth > 0 && (
         <div
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
           onMouseDown={onMouseDown}
-          onMouseMove={onMouseMove}
-          onMouseUp={onMouseUp}
           className={cs(scm("scrollBar"), showScrollBar && "show")}
           style={scrollBarStyle}
         />
