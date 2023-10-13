@@ -120,7 +120,7 @@ const Scroll: FC<ScrollProps> = (props) => {
     hideBar();
   };
   useEffect(() => {
-    setScrollBarWidth(10);
+    setScrollBarWidth(calcScrollWidth());
     initBar();
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
