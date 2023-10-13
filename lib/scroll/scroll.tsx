@@ -52,9 +52,10 @@ const Scroll: FC<ScrollProps> = (props) => {
     height: scrollBarHeight,
     transform: `translateY(${scrollTop}px)`,
   };
+  const transformScrollTop = (sTop: number) => (sTop / scrollHeight.current) * wrapHeight.current
   const onScroll = (e) => {
     setShowScrollBar(true);
-    setScrollTop((e.currentTarget.scrollTop / scrollHeight.current) * wrapHeight.current);
+    setScrollTop(transformScrollTop(e.currentTarget.scrollTop));
   };
   const initBar = (count = 0) => {
     if (count > 20) return;
@@ -85,7 +86,7 @@ const Scroll: FC<ScrollProps> = (props) => {
         if (n < 0) {
           return 0;
         }
-        const maxN = scrollHeight.current - wrapHeight.current
+        const maxN = transformScrollTop(scrollHeight.current - wrapHeight.current)
         if (n > maxN) {
           return maxN;
         }
@@ -94,6 +95,7 @@ const Scroll: FC<ScrollProps> = (props) => {
     }
   };
   const hideBar = () => {
+    if (dragging.current) return;
     isScroll = setTimeout(() => {
       setShowScrollBar(false);
     }, 1000);
@@ -115,7 +117,7 @@ const Scroll: FC<ScrollProps> = (props) => {
     hideBar()
   }
   useEffect(() => {
-    setScrollBarWidth(calcScrollWidth());
+    setScrollBarWidth(10);
     initBar();
     document.addEventListener('mousemove', onMouseMove)
     document.addEventListener('mouseup', onMouseUp)
@@ -134,19 +136,23 @@ const Scroll: FC<ScrollProps> = (props) => {
       <div
         ref={contentRef}
         className={scm("content")}
-        style={{ right: -scrollBarWidth }}
+        style={{ right: -scrollBarWidth, userSelect: dragging.current ? "none" : undefined }}
         onScroll={onScroll}
       >
         {children}
       </div>
       {scrollBarWidth > 0 && (
         <div
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          onMouseDown={onMouseDown}
-          className={cs(scm("scrollBar"), showScrollBar && "show")}
-          style={scrollBarStyle}
-        />
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className={scm('track')}
+        >
+          <div
+            onMouseDown={onMouseDown}
+            className={cs(scm("scrollBar"), showScrollBar && "show")}
+            style={scrollBarStyle}
+          />
+        </div>
       )}
     </div>
   );
