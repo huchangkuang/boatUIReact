@@ -52,15 +52,15 @@ export const menuList: MenuItem[] = [
       },
     ],
   },
-  {
-    title: "数据",
-    list: [
-      {
-        key: "form",
-        title: "Form 表单",
-      },
-    ],
-  },
+  // {
+  //   title: "数据",
+  //   list: [
+  //     {
+  //       key: "form",
+  //       title: "Form 表单",
+  //     },
+  //   ],
+  // },
   {
     title: "反馈",
     list: [
