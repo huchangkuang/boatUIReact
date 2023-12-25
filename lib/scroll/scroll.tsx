@@ -114,7 +114,9 @@ const Scroll: FC<ScrollProps> = (props) => {
     hideBar();
   };
   const onMouseEnter = () => {
-    showBar();
+    if (isScroll) {
+      showBar();
+    }
   };
   const onMouseLeave = () => {
     hideBar();

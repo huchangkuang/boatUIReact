@@ -15,6 +15,7 @@ export interface ButtonProps
     >
   > {
   type?: ButtonType;
+  htmlType?: "submit" | "reset" | "button" | undefined;
   className?: string;
   disabled?: boolean;
   size?: ButtonSize;
@@ -26,6 +27,7 @@ export interface ButtonProps
 const Button: FC<ButtonProps> = (props) => {
   const {
     type = "default",
+    htmlType,
     disabled,
     className,
     children,
@@ -63,6 +65,7 @@ const Button: FC<ButtonProps> = (props) => {
   return (
     <button
       {...rest}
+      type={htmlType}
       onClick={!disabled ? onBtnClick : undefined}
       className={cs(classes)}
       onMouseDown={() => !disabled && setButtonActive(true)}

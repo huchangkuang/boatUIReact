@@ -1,5 +1,7 @@
-import React, { FC, useState } from "react";
-import FormLess, { FormLessItem } from "../../lib/form/formLess";
+import React, {FC, useEffect} from "react";
+import {Button, Form} from "../../lib/index";
+
+const {FormLess, FormLessItem, useForm} = Form
 
 type FormData = {
   name: string;
@@ -7,18 +9,17 @@ type FormData = {
   mobile: string;
 };
 export const FormLessDemo: FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "test",
-    password: "123456",
-    mobile: "1234125325",
-  });
-  const onSubmit = (value: FormData) => {
-    console.log(value);
-  };
-  console.log(formData, "form");
+  const [form] = useForm()
+  useEffect(() => {
+    form.setFieldsValue({
+      name: "test",
+      password: "123456",
+      mobile: "1234125325",
+    })
+  }, []);
   return (
     <div>
-      <FormLess<FormData> formData={formData} onSubmit={onSubmit}>
+      <FormLess form={form} onFinish={v => console.log(v)}>
         <FormLessItem name="name">
           <input />
         </FormLessItem>
@@ -28,9 +29,7 @@ export const FormLessDemo: FC = () => {
         <FormLessItem name="mobile">
           <input />
         </FormLessItem>
-        <FormLessItem name="button" type="submit">
-          <button>submit</button>
-        </FormLessItem>
+        <Button type='primary' htmlType='submit'>submit</Button>
       </FormLess>
     </div>
   );

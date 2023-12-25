@@ -9,3 +9,4 @@ export { Footer } from "./layout/layout";
 export { Aside } from "./layout/layout";
 export { Content } from "./layout/layout";
 export { default as message } from "./message/message";
+export { default as Form } from "./form";

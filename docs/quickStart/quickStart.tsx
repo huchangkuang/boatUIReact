@@ -56,6 +56,9 @@ export const QuickStart: FC = () => {
           <div className={sc("components-item-body")}>
             <Button>按钮</Button>
             <Button type="primary">按钮</Button>
+            <div onClick={(e) => console.log(e.target, e.currentTarget)}>
+              <Button>test</Button>
+            </div>
           </div>
         </div>
         <div className={sc("components-item")}>

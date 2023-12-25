@@ -8,7 +8,7 @@ import cs from "classnames";
 
 export const scm = scopeClassMaker("example-app");
 export const App: FC = () => {
-  const [select, setSelect] = useState<Menu>("quickStart");
+  const [select, setSelect] = useState<Menu>("form");
   const placeRef = useRef<HTMLDivElement>(null);
   return (
     <Layout style={{ width: "100vw", height: "100vh" }}>
